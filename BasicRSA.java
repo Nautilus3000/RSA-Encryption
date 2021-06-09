@@ -5,22 +5,25 @@ import java.util.Scanner;
 public class BasicRSA{
 
     static int gcd(int a, int b)
-    {
-        if (a == 0)
-            return b;
-        else
-            return gcd(b % a, a);
+    {   /*Returns Greatest common divisor of 2 numbers
+         *implementing Euclidean ALgorithm */
+
+        if (a == 0) return b;
+        else return gcd(b % a, a);
     }
 
-    static int modInv(int a, int b){
+    static int modInv(int a, int b)
+    {   /*Returns modular inverse of a mod b
+        *implementing Extended Euclidean ALgorithm*/
         return modInv(a,b,b,0,1);
-     }
+    }
  
-     static int modInv(int a,int b,int c,int x,int y)
-     {   
+    static int modInv(int a,int b,int c,int x,int y)
+    {   //over-loading
+
          if(b%a==0) return y;
-         else return modInv(b%a,a,c,y,c+(x-(b/a)*y)%c );
-     }
+         else return modInv(b%a,a,c,y,c+(x-(b/a)*y)%c ); 
+    }
 
     public static void main(String args[]){
         
@@ -34,7 +37,8 @@ public class BasicRSA{
         int q=sc.nextInt();
         
         System.out.println("Enter a num to encrypt:");
-        int m=sc.nextInt();
+        int m=sc.nextInt(); 
+        //Plaintext: message to be encrypted
         
         sc.close();
 
